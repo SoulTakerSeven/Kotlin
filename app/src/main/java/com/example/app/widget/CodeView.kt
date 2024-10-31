@@ -12,23 +12,7 @@ import com.example.app.R
 import com.example.core.utils.dp2px
 import java.util.Random
 
-class CodeView : AppCompatTextView {
-
-    constructor(context: Context) : this(context, null)
-
-    constructor(context: Context, attrs: AttributeSet?) : super(context, attrs) {
-        setTextSize(TypedValue.COMPLEX_UNIT_SP, 18f)
-        setGravity(Gravity.CENTER)
-        setBackgroundColor(getContext().getColor(R.color.colorPrimary))
-        setTextColor(Color.WHITE)
-
-        paint.isAntiAlias = true
-        paint.style = Paint.Style.STROKE
-        paint.setColor(getContext().getColor(R.color.colorAccent))
-        paint.strokeWidth = dp2px(6f)
-
-        updateCode()
-    }
+class CodeView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null) : AppCompatTextView(context, attrs) {
 
     private val paint = Paint()
 
@@ -43,6 +27,19 @@ class CodeView : AppCompatTextView {
         "tcp/ip"
     )
 
+    init {
+        setTextSize(TypedValue.COMPLEX_UNIT_SP, 18f)
+        setGravity(Gravity.CENTER)
+        setBackgroundColor(getContext().getColor(R.color.colorPrimary))
+        setTextColor(Color.WHITE)
+
+        paint.isAntiAlias = true
+        paint.style = Paint.Style.STROKE
+        paint.setColor(getContext().getColor(R.color.colorAccent))
+        paint.strokeWidth = 6f.dp2px()
+
+        updateCode()
+    }
 
     fun updateCode() {
         val random = Random().nextInt(codeList.size)

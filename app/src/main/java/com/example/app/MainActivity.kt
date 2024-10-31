@@ -47,10 +47,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-    fun login() {
-        val username = et_username.getText().toString();
-        val password = et_password.getText().toString();
-        val code = et_code.getText().toString();
+    private fun login() {
+        val username = et_username.text.toString();
+        val password = et_password.text.toString();
+        val code = et_code.text.toString();
 
         val user = User(username, password, code);
         if (verify(user)) {
@@ -61,13 +61,13 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun verify(user: User): Boolean {
-        if (user.username != null && user.username!!.length < 4) {
+        if (user.username.length < 4) {
             toast("用户名不合法");
             return false;
         }
 
         val password = user.password
-        if (password != null && password.length < 4) {
+        if (password.length < 4) {
             toast("密码不合法");
             return false;
         }

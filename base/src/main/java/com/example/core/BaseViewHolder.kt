@@ -6,9 +6,7 @@ import android.widget.TextView
 import androidx.annotation.IdRes
 import androidx.recyclerview.widget.RecyclerView
 
-abstract class BaseViewHolder : RecyclerView.ViewHolder {
-
-    constructor(itemView: View) : super(itemView)
+abstract class BaseViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     @SuppressLint("UseSparseArrays")
     private val viewHashMap = HashMap<Int, View>()
