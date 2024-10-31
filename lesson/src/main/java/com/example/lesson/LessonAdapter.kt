@@ -8,11 +8,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.core.BaseViewHolder
 import com.example.lesson.entity.Lesson
 
-class LessonAdapter : RecyclerView.Adapter<LessonAdapter.LessonViewHolder>() {
+internal class LessonAdapter : RecyclerView.Adapter<LessonAdapter.LessonViewHolder>() {
 
     private var list = listOf<Lesson>();
 
-    fun updateAndNotify(list: List<Lesson> ) {
+    internal fun updateAndNotify(list: List<Lesson> ) {
         this.list = list
         notifyDataSetChanged();
     }
@@ -33,9 +33,7 @@ class LessonAdapter : RecyclerView.Adapter<LessonAdapter.LessonViewHolder>() {
     /**
      * 静态内部类
      */
-    class LessonViewHolder : BaseViewHolder {
-
-        constructor(itemView: View) : super(itemView)
+    internal class LessonViewHolder(itemView: View) : BaseViewHolder(itemView) {
 
         companion object {
             fun onCreate(parent: ViewGroup): LessonViewHolder {

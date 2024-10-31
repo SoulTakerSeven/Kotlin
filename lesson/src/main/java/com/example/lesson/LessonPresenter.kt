@@ -7,21 +7,15 @@ import com.example.lesson.entity.Lesson
 import com.google.gson.reflect.TypeToken
 import java.lang.reflect.Type
 
-internal class LessonPresenter {
+class LessonPresenter(private var activity: LessonActivity) {
 
     companion object {
         private const val LESSON_PATH = "lessons"
     }
 
-    private lateinit var activity: LessonActivity
-
-    constructor(activity: LessonActivity) {
-        this.activity = activity
-    }
-
     private var lessons = ArrayList<Lesson>()
 
-    private val type: Type = TypeToken<List<Lesson>>().type
+    private val type: Type = object : TypeToken<List<Lesson>>(){}.type
 
     fun fetchData() {
         HttpClient.get(LESSON_PATH, type, object : EntityCallback<List<Lesson>> {

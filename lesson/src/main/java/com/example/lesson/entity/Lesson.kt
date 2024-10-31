@@ -1,6 +1,6 @@
 package com.example.lesson.entity
 
-class Lesson {
+internal class Lesson {
     enum class State {
         PLAYBACK {
             override fun stateName(): String {
